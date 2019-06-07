@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109667207-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109667207-1');
+</script>
+
+		<title>Entertainment</title>
+		<link rel="icon" href="mlogo.png" type="image" sizes="16x16>
+		
+		<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="This is News World's Entertainment News Portal, Where you can read all entertainment related NEWS from different world leading news websites." />
+		<meta name="keywords" content="News World,NewsWorld,newsworld,entertainment,Entertainment" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDbNlvz6l-m3N3YMaBQxONuIhseCgHwSgI",
+        authDomain: "newsworld-com.firebaseapp.com",
+        databaseURL: "https://newsworld-com.firebaseio.com",
+        projectId: "newsworld-com",
+        storageBucket: "newsworld-com.appspot.com",
+        messagingSenderId: "989234582657"
+      };
+      firebase.initializeApp(config);
+
+
+    </script>
+
+
+
+		<script type="text/javascript">
+
+			var userEmail;
+			function logOut(){
+				firebase.auth().signOut().then(function() {
+					  // Sign-out successful.
+					}).catch(function(error) {
+					  // An error happened.
+					  alert(error);
+					});
+
+			}
+
+			 firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              userEmail = user.email;
+              document.getElementById("userEmailPlace").innerHTML=userEmail;
+
+
+            
+            } else {
+              // No user is signed in.
+              location.href='index.html';
+            }
+            });
+		</script>
+
+	</head>
+	<body>
+
+
+
+
+	
+
+				
+	<script type="text/javascript">
+						
+							var data;
+							  var xhttp = new XMLHttpRequest();
+							  xhttp.onreadystatechange = function() {
+							    if (this.readyState == 4 && this.status == 200) {
+							      data=this.responseText;
+							    }
+							  };
+							  xhttp.open("GET", "https://newsapi.org/v1/sources?category=entertainment", true);
+							 xhttp.send();
+
+							function alerted()
+							{
+
+								var obj = JSON.parse(data);
+								var News="";
+								var imgs;
+
+							News=News+"<br>";
+								
+							var cc=obj.sources;
+							for (var i = 0; i < cc.length; i++) {
+							if(i%3==0)
+								{
+									News=News+'<div id="extra"><div class="container"><div class="row no-collapse-1">';
+									
+								}
+
+								News=News+'<section class="4u"> <div class="box"> <p><strong><h2>'+cc[i].name+'</h2></strong></p><br><p>'+cc[i].description+'</p></br>';
+								
+								News=News+'<form method="link" action="news.html">';
+									News=News+'<input id="newsId" type="hidden" name="newsId" value="'+cc[i].id+'"/>';
+									
+									News=News+'<input id="newsName" type="hidden" name="newsName" value="'+cc[i].name+'"/>';
+								
+								
+									News=News+'<input type="submit" value="Read News">';
+									News=News+'</form><br>';
+
+
+								News=News+'<a href="'+cc[i].url+'" class="button"  target="_blank">Visit Website</a> </div></section>';
+
+								if(i%3==2)
+								{
+									News=News+'</div></div></div>';
+									News=News+"<br>";
+
+									
+								}
+
+							}
+
+
+							document.getElementById("sources").innerHTML= News;
+
+							};
+
+
+</script>
+
+		 <!-- Wrapper -->
+      <div class="wrapper style1">
+
+        <!-- Header -->
+          <div id="header" class="skel-panels-fixed">
+            <div id="logo">
+           	<a href="homepage.html"><img id="mlogo" src="logo.png" /></a>   
+              
+            </div>
+            <nav id="nav">
+              <ul>
+                <li class="active"><a href="business.html">Business</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="gaming.html">Gaming</a></li>
+                <li><a href="general.html">General</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="politics.html">Politics</a></li>
+                <li><a href="sciencennature.html">Science and Nature</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+
+                <br>
+               <div style="text-align: right">
+                <h2 id="userEmailPlace" style="display: inline-block;"></h2>
+                <li><input type="button" style="background-color:orange;display: inline-block;" onclick="logOut()" value="Log Out" /></li>
+                </div>
+                 
+                
+                
+              </ul>
+              
+            </nav>
+          </div>
+
+
+<!-- Banner -->
+					<div id="banner" class="container">
+						<section>
+							<p>This is <strong>Entertainment News Portal</strong>, Where you can read all entertainment related NEWS from different world leading news websites. </p>
+						
+						</section>
+
+					
+					<a href="#" onclick ="alerted()" class="button medium">Click To View the List of Web Sites</a>			
+
+		
+
+
+	</div>
+	<div id="sources">
+		</div>
+<br><br><Center><input type="button" class="button medium" style="background-color:orange;" onclick="logOut()" value="Log Out" /></Center>
+
+
+					</div>
+
+
+
+					
+
+	<!-- Footer -->
+		
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="copyright">
+					<p>Design By: <a href="http://templated.co">Abhishek Jajal, Jay Goyani, Darshan Kansagara</a> 
+						Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>),
+					<a href="https://icons8.com/">Icons8</a>
+				</p>
+					<ul class="icons">
+												<li><a href="https://www.facebook.com/abhijajal" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="https://www.facebook.com/jaygoyani217" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="https://www.facebook.com/darshankansagara97" class="fa fa-facebook"><span>Facebook</span></a></li>
+						
+					</ul>
+								<style>
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -175px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+
+<script>
+// When the user clicks on div, open the popup
+function popup() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>
+
+
+Need some help ? No worries, contact our digital assistant below !
+<br>
+
+<div class="popup" onclick="popup()"><img src="pda.png"/>
+  <span class="popuptext" id="myPopup"><iframe  width="350"    height="430"    src="https://console.dialogflow.com/api-client/demo/embedded/f26af8a9-aaef-4c93-b251-765375b1772f">
+</iframe></span>
+  
+</div>
+
+
+					 
+					
+					
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

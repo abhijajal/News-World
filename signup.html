@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109667207-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109667207-1');
+</script>
+
+    <title>Sign Up</title>
+    <link rel="icon" href="mlogo.png" type="image" sizes="16x16>
+    
+    <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="This is News World's Sign Up page, Where you can Sign Up." />
+    <meta name="keywords" content="News World,NewsWorld,newsworld,Sign Up,signup" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+      <link rel="stylesheet" href="css/skel.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/style-wide.css" />
+    </noscript>
+    
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDbNlvz6l-m3N3YMaBQxONuIhseCgHwSgI",
+        authDomain: "newsworld-com.firebaseapp.com",
+        databaseURL: "https://newsworld-com.firebaseio.com",
+        projectId: "newsworld-com",
+        storageBucket: "newsworld-com.appspot.com",
+        messagingSenderId: "989234582657"
+      };
+      firebase.initializeApp(config);
+
+
+    </script>
+
+
+    <script type="text/javascript">
+  
+      var database = firebase.database();
+      function writeUserData() {      
+      firebase.database().ref().set({
+
+      });
+    }
+
+      function readdata()
+      {
+      var starCountRef = firebase.database().ref('username');
+      starCountRef.on('value', function(snapshot) {
+      updateStarCount(postElement, snapshot.val());
+        alert(snapshot.val());
+    });
+    }
+    </script>
+
+    <script type="text/javascript">
+
+
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              location.href='homepage.html';
+
+            } else {
+              // No user is signed in.
+
+            }
+            });
+
+          function signup()
+          {
+          var email=document.getElementById("email").value;
+          var password=document.getElementById("password").value;
+          var cpassword=document.getElementById("cpassword").value;
+          if(password==cpassword){
+
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+
+            alert(error);
+          });
+  
+
+          }
+          else{
+            alert("Password and Confirm Password are different !");
+          }
+
+          }
+
+          
+         
+
+        
+
+         
+
+            function userDetails()
+            {
+            if (user != null) {
+              email = user.email;
+              uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+             alert(uid);                  // this value to authenticate with your backend server, if
+             alert(email);                  // you have one. Use User.getToken() instead.
+            }
+            }
+
+
+
+</script>
+  </head>
+  <body>
+
+
+
+</body>
+</html>
+
+  
+    <!-- Wrapper -->
+      <div class="wrapper style1">
+
+        <!-- Header -->
+          <div id="header" class="skel-panels-fixed">
+            <div id="logo">
+              <center><img id="mlogo" src="logo.png" style="direction:" /></center>
+              
+              
+            </div>
+
+             <div id="header" class="skel-panels-fixed">
+            <div id="logo">
+              <center><img id="mlogo" src="logo.png" style="direction:" /></center> 
+            </div>
+
+            <nav id="nav">
+              <ul>
+                <li class="active"><a href="index.html">Sign In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>              
+              </ul>
+            </nav>
+          </div>
+
+           
+        </div>
+
+        <!-- Banner -->
+          <div id="banner" class="container">
+            <section>
+              <p>Please Sign Up for <strong>News World</strong>!</p>
+               
+               <h2>Email Id:</h2>
+               <br>
+               <input type="text" style="text-align: center;" id="email"/> 
+               <br>
+               <h2>Password:</h2>
+               <br>
+               <input type="password" style="text-align: center;" id="password"/>
+               <br>
+               <h2>Confirm Password:</h2>
+               <br>
+               <input type="password" style="text-align: center;" id="cpassword"/>
+
+               
+              <br>
+             <input type="button" style="background-color:orange;" onclick="signup()" value="Sign Up" />
+              <br><br>
+              <a href="index.html"><input type="button"  style="background-color:orange;"  value="Sign In" /></a>
+              <br><br>
+                Please Sign In directly, if you have already Signed up . 
+            </section>
+
+          </div>
+
+          
+
+
+<div id="demo">
+</div>
+
+
+
+  </div>
+
+  <!-- Footer -->
+    
+
+  <!-- Copyright -->
+    <div id="copyright">
+      <div class="container">
+        <div class="copyright">
+          <p>Design By: <a href="http://templated.co">Abhishek Jajal, Jay Goyani, Darshan Kansagara</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p>
+          <ul class="icons">
+                        <li><a href="https://www.facebook.com/abhijajal" class="fa fa-facebook"><span>Facebook</span></a></li>
+            <li><a href="https://www.facebook.com/jaygoyani217" class="fa fa-facebook"><span>Facebook</span></a></li>
+            <li><a href="https://www.facebook.com/darshankansagara97" class="fa fa-facebook"><span>Facebook</span></a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

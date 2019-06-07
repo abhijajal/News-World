@@ -1,0 +1,95 @@
+Agter endif---------------------------------
+
+
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDbNlvz6l-m3N3YMaBQxONuIhseCgHwSgI",
+        authDomain: "newsworld-com.firebaseapp.com",
+        databaseURL: "https://newsworld-com.firebaseio.com",
+        projectId: "newsworld-com",
+        storageBucket: "newsworld-com.appspot.com",
+        messagingSenderId: "989234582657"
+      };
+      firebase.initializeApp(config);
+
+
+    </script>
+
+
+
+		<script type="text/javascript">
+
+			var userEmail;
+			function logOut(){
+				firebase.auth().signOut().then(function() {
+					  // Sign-out successful.
+					}).catch(function(error) {
+					  // An error happened.
+					  alert(error);
+					});
+
+			}
+
+			 firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              userEmail = user.email;
+              document.getElementById("userEmailPlace").innerHTML=userEmail;
+
+
+            
+            } else {
+              // No user is signed in.
+              location.href='index.html';
+            }
+            });
+		</script>
+	
+
+--------------------------------------------------------------------------------------
+
+Replace wrapper
+
+---------------------------------------------
+
+  <!-- Wrapper -->
+      <div class="wrapper style1">
+
+        <!-- Header -->
+          <div id="header" class="skel-panels-fixed">
+            <div id="logo">
+              <img id="mlogo" src="logo.png" />
+              
+              
+            </div>
+            <nav id="nav">
+              <ul>
+                <li class="active"><a href="business.html">Business</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="gaming.html">Gaming</a></li>
+                <li><a href="general.html">General</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="politics.html">Politics</a></li>
+                <li><a href="sciencennature.html">Science and Nature</a></li>
+                <li><a href="sport.html">Sport</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <br>
+                <h2 id="userEmailPlace" style="display: inline-block;"></h2>
+                <li><input type="button" style="background-color:orange;display: inline-block;" onclick="logOut()" value="Log Out" /></li>
+                
+                
+                
+              </ul>
+              
+            </nav>
+          </div>
+
+  -----------------------------------------------
+after div sources:
+
+-------------------------------------------------
+
+<br><br><Center><input type="button" class="button medium" style="background-color:orange;" onclick="logOut()" value="Log Out" /></Center>
